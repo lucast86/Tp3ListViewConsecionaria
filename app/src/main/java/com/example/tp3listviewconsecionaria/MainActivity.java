@@ -2,6 +2,7 @@ package com.example.tp3listviewconsecionaria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
      */
     private ListView lvAutos;
+    private AutoAdapter adaptador;
+    private List<Autos> listaAutos;
 
 
     @Override
@@ -40,21 +43,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setTitle("TRENTO Automotores");
+
         lvAutos = findViewById(R.id.lvAutos);
 
-        List<Autos> listaAutos = new ArrayList<>();
+        listaAutos = new ArrayList<>();
 
         this.cargarDatos(listaAutos);
+
+        adaptador = new AutoAdapter(listaAutos);
 
         lvAutos.setAdapter(new AutoAdapter(listaAutos));
 
         lvAutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Click en Auto"+ position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Click en Auto"+ position, Toast.LENGTH_SHORT).show();
+                cargarDetalles(position);
             }
         });
 
+    }
+
+    private void cargarDetalles(int position){
+        Autos auto = adaptador.getItem(position);
+
+        Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
+
+        intent.putExtra("E_ID", auto.getId());
+        intent.putExtra("E_MODELO", auto.getModelo());
+        intent.putExtra("E_KM", auto.getKm());
+        intent.putExtra("E_MARCA", auto.getMarca());
+        intent.putExtra("E_PRECIO", auto.getPrecio());
+        intent.putExtra("E_DESCRIPCION", auto.getDescipcion());
+        intent.putExtra("E_IMAGEN", auto.getImagen());
+
+        startActivity(intent);
     }
 
     private void cargarDatos(List<Autos> listaAutos) {
