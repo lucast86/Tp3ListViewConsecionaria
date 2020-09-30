@@ -1,9 +1,14 @@
 package com.example.tp3listviewconsecionaria;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -36,14 +41,14 @@ public class MainActivity extends AppCompatActivity {
     private ListView lvAutos;
     private AutoAdapter adaptador;
     private List<Autos> listaAutos;
-    private swiperefreshLayaout swiperefreshLayaout;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setTitle("TRENTO Automotores");
+        getSupportActionBar().setTitle("AUTOMOTORES");
 
         lvAutos = findViewById(R.id.lvAutos);
 
@@ -63,7 +68,45 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        swipeRefreshLayout = findViewById(R.id.swiperefresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //cargarDatos();
+                swipeRefreshLayout.setRefreshing(false);//detiene el icono de refresh
+            }
+        });
     }
+
+
+    //Menu_principal
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_principal, menu);
+
+        return true;
+    }
+    //Funciones de menu. salir y refresh
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case  R.id.mnuPrincipalSalir:
+                finish();
+                break;
+            case R.id.mnuPrincipalRefresh:
+                swipeRefreshLayout.setRefreshing(true);
+                //cargarDatos();
+                swipeRefreshLayout.setRefreshing(false);
+                break;
+
+        }
+        return true;
+
+    }
+
 
     private void cargarDetalles(int position){
         Autos auto = adaptador.getItem(position);
