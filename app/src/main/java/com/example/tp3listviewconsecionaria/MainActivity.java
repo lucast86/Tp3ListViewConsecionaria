@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView lvAutos;
     private AutoAdapter adaptador;
     private List<Autos> listaAutos;
-
+    private swiperefreshLayaout swiperefreshLayaout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
