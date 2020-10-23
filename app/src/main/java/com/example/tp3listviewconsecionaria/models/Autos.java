@@ -10,6 +10,8 @@ public class Autos {
         private String descipcion;
         private int imagen;
 
+    public Autos() {
+    }
 
     public Autos(int id, String marca, Float precio, int modelo, float km, String ciudad, String descipcion, int imagen) {
         this.id = id;

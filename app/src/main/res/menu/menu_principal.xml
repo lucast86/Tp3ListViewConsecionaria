@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/mnuPrincipalAgregarAuto"
+        android:icon="@drawable/ic_baseline_add_24"
+        android:title="Agregar"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/mnuPrincipalRefresh"
         android:icon="@drawable/ic_baseline_refresh_24"
         android:title="Refresh"
