@@ -111,7 +111,7 @@ import android.widget.Toast;
                 edtGrabarKilometrosAuto.setText(cursor.getString(cursor.getColumnIndex("km")));
                 edtGrabarDescripcionAuto.setText(cursor.getString(cursor.getColumnIndex("descipcion")));
             }else{
-                Toast.makeText(ctx, "No hay registros", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(ctx, "No hay registros", Toast.LENGTH_SHORT).show();
             }
 
             db.close();
