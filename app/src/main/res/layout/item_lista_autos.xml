@@ -39,6 +39,7 @@
         android:text="TextView"
         android:textColor="#070707"
         android:textSize="20sp"
+        android:textStyle="italic"
         app:layout_constraintStart_toEndOf="@+id/imgAutoImagen"
         app:layout_constraintTop_toBottomOf="@+id/txtAutoNonbre" />
 
@@ -48,6 +49,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:text="TextView"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/imgAutoImagen"
         app:layout_constraintStart_toEndOf="@+id/imgAutoImagen" />
 
@@ -57,6 +59,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="12dp"
         android:text="TextView"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/txtAutoDatos"
         app:layout_constraintStart_toEndOf="@+id/txtAutoDatos" />
 
@@ -66,6 +69,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="12dp"
         android:text="TextView"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/txtAutoModelo"
         app:layout_constraintStart_toEndOf="@+id/txtAutoModelo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

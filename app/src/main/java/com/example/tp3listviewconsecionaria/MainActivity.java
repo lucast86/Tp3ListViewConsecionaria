@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         listaAutos = new ArrayList<>();
 
-        this.cargarDatos(listaAutos);
-        //cargarDatosSqLite();
+       // this.cargarDatos(listaAutos);
+        this.cargarDatosSqLite();
 
         adaptador = new AutoAdapter(listaAutos);
 
@@ -131,12 +131,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
 
         intent.putExtra("E_ID", auto.getId());
-        intent.putExtra("E_MODELO", auto.getModelo());
+        /*intent.putExtra("E_MODELO", auto.getModelo());
         intent.putExtra("E_KM", auto.getKm());
         intent.putExtra("E_MARCA", auto.getMarca());
         intent.putExtra("E_PRECIO", auto.getPrecio());
         intent.putExtra("E_DESCRIPCION", auto.getDescipcion());
-        intent.putExtra("E_IMAGEN", auto.getImagen());
+        intent.putExtra("E_IMAGEN", auto.getImagen());*/
 
         startActivity(intent);
     }
@@ -180,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
                 "Precio charlable.", R.drawable.auto_7));
     }
 
-
     private void cargarDatosSqLite() {
 
         dbHelper = new DbHelper(context);
@@ -190,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         listaAutos.clear();
 
         //seleccionamos todos los registros
-        Cursor cursor = db.rawQuery("SELECT * FROM Autos WHERE activo=1",null);
+        Cursor cursor = db.rawQuery("SELECT * FROM autos ",null);
 
         //nos posicionamos al inicio del curso
         if(cursor.moveToFirst()) {
@@ -206,7 +205,6 @@ public class MainActivity extends AppCompatActivity {
                 autos.setModelo(cursor.getInt(cursor.getColumnIndex("modelo")));
                 autos.setKm(cursor.getFloat(cursor.getColumnIndex("km")));
                 autos.setDescipcion(cursor.getString(cursor.getColumnIndex("descipcion")));
-
                 listaAutos.add(autos);
 
                 // corremos a siguiente posición del curso

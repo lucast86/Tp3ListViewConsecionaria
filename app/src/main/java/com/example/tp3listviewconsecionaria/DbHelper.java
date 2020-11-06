@@ -9,6 +9,11 @@ public class DbHelper extends SQLiteOpenHelper {
     private final static String NAME_DB = "autos.sqlite";
     private final static int VERSION_DB = 1;
 
+   /* private final String sqlCreateAutos = "CREATE TABLE autos (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            " marca	TEXT NOT NULL,precio NUMERIC NOT NULL,modelo INTEGER NOT NULL, " +
+            "km	NUMERIC, descipcion TEXT);";
+*/
+
     private final String sqlCreateAutos = "CREATE TABLE autos ( " +
             "id	INTEGER NOT NULL,  " +
             " marca	TEXT NOT NULL, " +
@@ -18,6 +23,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "descipcion TEXT, " +
             "PRIMARY KEY (id  AUTOINCREMENT) " +
             ");";
+
 
     public DbHelper(Context context) {
         super(context, NAME_DB, null, VERSION_DB);
