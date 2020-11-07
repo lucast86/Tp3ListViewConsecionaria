@@ -56,10 +56,10 @@ public class AutoAdapter extends BaseAdapter {
 
         txtAutoNombre.setText(autos.getMarca());
         txtAutoPrecio.setText(String.valueOf("$" + autos.getPrecio()));
-        txtAutoDatos.setText(String.valueOf(autos.getKm() + " km - "));
-        txtAutoModelo.setText(String.valueOf(autos.getModelo() + " - "));
+        txtAutoDatos.setText(String.valueOf(autos.getKm() + " km -"));
+        txtAutoModelo.setText(String.valueOf(autos.getModelo()));
         txtAutoCiudad.setText(autos.getCiudad());
-        imgAutoImagen.setImageResource(autos.getImagen());
+        imgAutoImagen.setImageResource(R.drawable.auto_1);
 
         return view;
 

@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tp3listviewconsecionaria.models.Autos;
+
 public class DetalleActivity extends AppCompatActivity {
 
     private TextView txtAutoSegPantallaModelo, txtAutoSegPantallaKm, txtAutoSegPantallaMarca;
@@ -83,13 +85,12 @@ public class DetalleActivity extends AppCompatActivity {
             //iteramos todos los registros del cursor y llenamos array con registros
             txtAutoSegPantallaMarca.setText(cursor.getString(cursor.getColumnIndex("marca")));
             txtAutoSegPantallaModelo.setText(cursor.getString(cursor.getColumnIndex("modelo")));
-            txtAutoSegPantallaPercio.setText(cursor.getString(cursor.getColumnIndex("precio")));
-            txtAutoSegPantallaKm.setText(cursor.getString(cursor.getColumnIndex("km")));
+            txtAutoSegPantallaPercio.setText("$" + cursor.getString(cursor.getColumnIndex("precio")));
+            txtAutoSegPantallaKm.setText(cursor.getString(cursor.getColumnIndex("km")) + " km");
             txtAutoSegPantallaDescipcion.setText(cursor.getString(cursor.getColumnIndex("descipcion")));
         }else{
             Toast.makeText(ctx, "No hay registros", Toast.LENGTH_SHORT).show();
         }
-
         db.close();
 
     }

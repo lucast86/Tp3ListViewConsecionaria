@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/auto_1"
+        tools:srcCompat="@drawable/auto_1" />
 
     <TextView
         android:id="@+id/txtAutoSegPantallaModelo"
@@ -24,6 +25,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:textSize="18sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgAutoSegPantalla" />
@@ -35,6 +37,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:textSize="18sp"
         android:textStyle="italic"
         app:layout_constraintStart_toEndOf="@+id/txtAutoSegPantallaModelo"
         app:layout_constraintTop_toBottomOf="@+id/imgAutoSegPantalla" />
@@ -60,7 +63,7 @@
         android:layout_marginTop="16dp"
         android:text="TextView"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.149"
@@ -75,7 +78,7 @@
         android:layout_marginTop="16dp"
         android:background="#FA0000"
         android:backgroundTint="@color/colorPrimary"
-        android:text="Preguntar"
+        android:text="Comprar"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
         android:textStyle="italic"
@@ -104,8 +107,7 @@
         android:layout_marginBottom="16dp"
         android:text="TextView"
         android:textAlignment="textStart"
-        android:textSize="14sp"
-        android:textStyle="italic"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.566"

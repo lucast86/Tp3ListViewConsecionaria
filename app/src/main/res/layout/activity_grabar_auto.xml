@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="390dp" />
+        app:layout_constraintGuide_begin="386dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -31,7 +31,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
-        android:textStyle="italic"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -45,10 +45,10 @@
         android:ems="10"
         android:hint="Marca"
         android:inputType="text"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textColorHighlight="@color/colorPrimary"
         android:textColorLink="@color/colorPrimary"
-        android:textCursorDrawable="@color/colorPrimary"
+        android:textCursorDrawable="@color/colorPrimaryDark"
         android:textStyle="italic"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -63,10 +63,10 @@
         android:ems="10"
         android:hint="Modelo"
         android:inputType="number"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textColorHighlight="@color/colorPrimary"
         android:textColorLink="@color/colorPrimary"
-        android:textCursorDrawable="@color/colorPrimary"
+        android:textCursorDrawable="@color/colorPrimaryDark"
         android:textStyle="italic"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -74,19 +74,18 @@
 
     <EditText
         android:id="@+id/edtGrabarKilometrosAuto"
-        android:layout_width="0dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="Kilometros"
         android:inputType="number"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textColorHighlight="@color/colorPrimary"
         android:textColorLink="@color/colorPrimary"
-        android:textCursorDrawable="@color/colorPrimary"
+        android:textCursorDrawable="@color/colorPrimaryDark"
         android:textStyle="italic"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/edtGrabarPrecioAuto" />
 
@@ -99,10 +98,10 @@
         android:ems="10"
         android:hint="Precio"
         android:inputType="number"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textColorHighlight="@color/colorPrimary"
         android:textColorLink="@color/colorPrimary"
-        android:textCursorDrawable="@color/colorPrimary"
+        android:textCursorDrawable="@color/colorPrimaryDark"
         android:textStyle="italic"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.656"
@@ -111,21 +110,19 @@
 
     <EditText
         android:id="@+id/edtGrabarDescripcionAuto"
-        android:layout_width="366dp"
-        android:layout_height="204dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="Descripciones"
         android:inputType="textMultiLine|text"
         android:shadowColor="#FFFFFF"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textColorHighlight="@color/colorPrimary"
         android:textColorLink="@color/colorPrimary"
-        android:textCursorDrawable="@color/colorPrimary"
+        android:textCursorDrawable="@color/colorPrimaryDark"
         android:textStyle="italic"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/edtGrabarKilometrosAuto" />
 
@@ -133,7 +130,7 @@
         android:id="@+id/swtGrabarFavorito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:buttonTint="@color/colorPrimaryDark"
         android:foregroundTint="@color/colorPrimaryDark"
         android:text="Favorito"
@@ -141,20 +138,20 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:textStyle="italic"
         android:thumbTint="@color/colorPrimary"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/edtGrabarDescripcionAuto" />
+        app:layout_constraintBottom_toTopOf="@+id/swtGrabarHabilitado"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3" />
 
     <Switch
         android:id="@+id/swtGrabarHabilitado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Habilitado"
         android:textColor="@color/colorPrimary"
         android:textStyle="italic"
         android:thumbTint="@color/colorPrimary"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/swtGrabarFavorito" />
+        app:layout_constraintBottom_toTopOf="@+id/btnGrabarCancelarAuto"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3" />
 
     <Button
         android:id="@+id/btnGrabarCancelarAuto"
@@ -181,5 +178,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <Button
+        android:id="@+id/btnGrabarFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Foto"
+        android:textColor="@android:color/background_light"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/edtGrabarKilometrosAuto"
+        app:layout_constraintTop_toBottomOf="@+id/edtGrabarPrecioAuto" />
+
+    <ImageView
+        android:id="@+id/imgGrabarFoto"
+        android:layout_width="160sp"
+        android:layout_height="160sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/edtGrabarDescripcionAuto"
+        app:layout_constraintTop_toBottomOf="@+id/btnGrabarFoto"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // OJO: encriptar password antes de almacenar
        String p = Utils.convertirSHA256(password);
         editor.putString("passwordUsuario", p);
-        editor.putString("emailUsuario", email);
+        editor.putString("nombreUsuario", email);
         editor.commit();
         //notificacion Mediante Snackbar -> requiere Support Design Library
         // Snackbar.make(findViewById(R.id.main_layout),"Valores Grabados OK",Snackbar.LENGTH_SHORT).show();

@@ -17,9 +17,9 @@ public class DbHelper extends SQLiteOpenHelper {
     private final String sqlCreateAutos = "CREATE TABLE autos ( " +
             "id	INTEGER NOT NULL,  " +
             " marca	TEXT NOT NULL, " +
-            "precio	NUMERIC NOT NULL, " +
+            "precio	NUMERIC(11,2) NOT NULL, " +
             "modelo	INTEGER NOT NULL, " +
-            "km	NUMERIC, " +
+            "km	NUMERIC(11,2), " +
             "descipcion TEXT, " +
             "PRIMARY KEY (id  AUTOINCREMENT) " +
             ");";

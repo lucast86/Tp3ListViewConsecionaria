@@ -1,6 +1,7 @@
     package com.example.tp3listviewconsecionaria;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
@@ -8,15 +9,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.example.tp3listviewconsecionaria.models.Autos;
+
+import java.util.List;
 
     public class GrabarAutoActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,7 +32,8 @@ import android.widget.Toast;
                 edtGrabarKilometrosAuto, edtGrabarDescripcionAuto;
         private Switch swtGrabarFavorito, swtGrabarHabilitado;
         private Button btnGrabarCancelarAuto;
-        private Button btnGrabarAuto;
+        private Button btnGrabarAuto, btnGrabarFoto;
+        private ImageView imgGrabarFoto;
 
         private DbHelper dbHelper;
         private SQLiteDatabase db;
@@ -39,8 +48,6 @@ import android.widget.Toast;
 
             Intent i = getIntent();
 
-            int id = i.getIntExtra("ID", 0);
-
             getSupportActionBar().setTitle("Cargar Auto Nuevo");
 
             findViewsById();
@@ -48,11 +55,6 @@ import android.widget.Toast;
             //abrimos db en modo escritura
             dbHelper = new DbHelper(this.ctx);
             db = dbHelper.getWritableDatabase();
-
-            if (id != 0) {
-                Toast.makeText(ctx, "seleccionó: " + id, Toast.LENGTH_SHORT).show();
-                cargarItemSqlite(id);
-            }
 
         }
         // referencias a los controles en la vista
@@ -71,10 +73,15 @@ import android.widget.Toast;
             // botones
             btnGrabarCancelarAuto = findViewById(R.id.btnGrabarCancelarAuto);
             btnGrabarAuto = findViewById(R.id.btnGrabarAuto);
+            btnGrabarFoto = findViewById(R.id.btnGrabarFoto);
+
+            //ImageView
+            imgGrabarFoto = findViewById(R.id.imgGrabarFoto);
 
             // clic listeners
             btnGrabarCancelarAuto.setOnClickListener(this);
             btnGrabarAuto.setOnClickListener(this);
+            btnGrabarFoto.setOnClickListener(this);
         }
 
         public void onClick(View v) {
@@ -90,43 +97,41 @@ import android.widget.Toast;
                     startActivity(intents);
                     finish();
                     break;
+                case R.id.btnGrabarFoto:
+                    cargarImagen();
+                    //mostrarDialogoOpciones();
+                    break;
             }
         }
 
-        private void cargarItemSqlite(int id) {
-            // obtenemos datos de SQLite
-            //String consulta = "SELECT * FROM Empleados WHERE idempleado="+ ID;
-
-            //seleccionamos todos los registros
-
-            Cursor cursor = db.rawQuery("SELECT * FROM autos  WHERE id=?", new String[]{String.valueOf(id)});
-
-            //nos posicionamos al inicio del curso
-            if(cursor!=null && cursor.moveToLast()) {
-
-                //iteramos todos los registros del cursor y llenamos array con registros
-                edtGrabarMarcaAuto.setText(cursor.getString(cursor.getColumnIndex("marca")));
-                edtGrabarModeloAuto.setText(cursor.getString(cursor.getColumnIndex("modelo")));
-                edtGrabarPrecioAuto.setText(cursor.getString(cursor.getColumnIndex("precio")));
-                edtGrabarKilometrosAuto.setText(cursor.getString(cursor.getColumnIndex("km")));
-                edtGrabarDescripcionAuto.setText(cursor.getString(cursor.getColumnIndex("descipcion")));
-            }else{
-               // Toast.makeText(ctx, "No hay registros", Toast.LENGTH_SHORT).show();
-            }
-
-            db.close();
-
+        private void cargarImagen() {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intent.setType("image/");
+            startActivityForResult(intent.createChooser(intent, "Seleccione la Aplicación"), 10);
         }
 
-        private void agregarItemSqlite(){
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            if (requestCode == RESULT_OK) {
+                Uri path = data.getData();
+                imgGrabarFoto.setImageURI(path);
+            }
+        }
+
+        /* private void   mostrarDialogoOpciones(){
+            final charSequence[] opciones={ "Tomar Foto",  "Elegir de la Galeria", "Cancelar"};
+        }*/
+
+        private void agregarItemSqlite() {
 
             // verificamos que los valores sean validos
-            if(validarItems()){
+            if (validarItems()) {
 
                 ContentValues nuevoRegistro = new ContentValues();
                 nuevoRegistro.put("marca", edtGrabarMarcaAuto.getText().toString());
-                nuevoRegistro.put("modelo",edtGrabarModeloAuto.getText().toString());
-                nuevoRegistro.put("precio",edtGrabarPrecioAuto.getText().toString());
+                nuevoRegistro.put("modelo", edtGrabarModeloAuto.getText().toString());
+                nuevoRegistro.put("precio", edtGrabarPrecioAuto.getText().toString());
                 nuevoRegistro.put("km",edtGrabarKilometrosAuto.getText().toString());
                 nuevoRegistro.put("descipcion",edtGrabarDescripcionAuto.getText().toString());
                 db.insert("autos", null, nuevoRegistro);

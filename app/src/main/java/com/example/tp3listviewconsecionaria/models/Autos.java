@@ -81,7 +81,7 @@ public class Autos {
         this.descipcion = descipcion;
     }
 
-    public int getImagen() {
+    public int getImagen(int auto_1) {
         return imagen;
     }
 
