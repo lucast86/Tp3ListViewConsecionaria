@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    private void limpiarCredencialesPrefs() {
+   /* private void limpiarCredencialesPrefs() {
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.commit();
@@ -125,17 +125,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtLoginPass.setText("");
         //notificacion Mediante Snackbar -> requiere Support Design Library
         // Snackbar.make(findViewById(R.id.main_layout),"Valores Borrados OK",Snackbar.LENGTH_SHORT).show();
-    }
+    }*/
 
     private boolean validarUsuario() {
         // TODO: completar validaciones necesarias pre-grabación del empleado
         boolean valido = true;
-        // campo Marca requerido
+        // campo LoginEmail requerido
         if (edtLoginEmail.getText().toString().isEmpty()) {
             valido = false;
             edtLoginEmail.setError("Debe completar este campo");
         }
-        // campo Modelo requerido
+        // campo LoginPass requerido
         if (edtLoginPass.getText().toString().isEmpty()) {
             valido = false;
             edtLoginPass.setError("Debe completar este campo");
