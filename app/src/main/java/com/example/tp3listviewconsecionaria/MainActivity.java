@@ -23,24 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    /*
-    -CREAR EL PAQUETE MODELS-- ADENTRO DEL MISMO LAS CLASES DEL MODELO(CLASE Mensajes) #-HECHO-#
-    -HACER UN LAYOUT LLAMADO ITEM_LISTA_MENSAJES- Y CREAR LA VISTA INDIVIDUAL DE CADA  --COMPLETA--
-    COMPONENTE QUE VA A COMPLETAR EL LISTVIEW. incompleta
-    -EN LA ACTIVITY_MAIL.XML AGREGAR UN LISTVIEW.
-    -CREAR LA CLASE MensajeAdapter en el paquete com,example.Tp3listview
-    CON TODOS SUS METODOS Y PROGRAMAR SUS FUNCIONES
-    -CREAR LA SEGUNDA PANTALLA DONDE SE VISUALICE EL CONTENIDO COMPLETO DEL MENSAJE INCLUYENDO
-    REMITENTE -- EN ESTA PANTALLA AGREGAR UN ACTIONBAR PARA RETORNAR A LA PANTALLA ANTERIOR
-    -CREAR LOS MENU DE OPCIONES CON LAS FUNCIONES Q PIDE EL PPRACTICO
 
-    para refresh
-
-    -<androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    va en build.gradle
-    -implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-
-     */
     private ListView lvAutos;
     private AutoAdapter adaptador;
     private List<Autos> listaAutos;
