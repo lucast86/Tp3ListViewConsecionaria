@@ -41,7 +41,7 @@ public class DetalleActivity extends AppCompatActivity {
         dbHelper = new DbHelper(this.ctx);
         db = dbHelper.getWritableDatabase();
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
 
         /*Bundle extras = intent.getExtras();
 
@@ -52,9 +52,9 @@ public class DetalleActivity extends AppCompatActivity {
         txtAutoSegPantallaDescipcion.setText(extras.getString("E_DESCRIPCION"));
         imgAutoSegPantalla.setImageResource(extras.getInt("E_IMAGEN"));
         */
-        Intent i = getIntent();
+        Intent intent = getIntent();
 
-        int id = i.getIntExtra("E_ID", 0);
+        int id = intent.getIntExtra("ID", 0);
 
         if (id != 0) {
             Toast.makeText(ctx, "seleccionó: " + id, Toast.LENGTH_SHORT).show();

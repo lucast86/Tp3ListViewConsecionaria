@@ -5,16 +5,16 @@ import java.security.NoSuchAlgorithmException;
 
 public class Utils {
 
-    public static String convertirSHA256(String password){
+    public static String convertirSHA256(String passs) {
         MessageDigest md = null;
-        try{
+        try {
             md = MessageDigest.getInstance("SHA-256");
-        }catch (NoSuchAlgorithmException ex){
+        } catch (NoSuchAlgorithmException ex) {
             ex.printStackTrace();
             return null;
         }
 
-        byte[] hash=md.digest(password.getBytes());
+        byte[] hash = md.digest(passs.getBytes());
         StringBuffer sb = new StringBuffer();
 
         for(byte b : hash){

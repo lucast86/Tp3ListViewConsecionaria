@@ -87,15 +87,12 @@ import java.util.List;
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btnGrabarCancelarAuto:
-                    Intent intent = new Intent(GrabarAutoActivity.this, MainActivity.class);
-                    startActivity(intent);
                     finish();
+                    //Intent intent = new Intent(GrabarAutoActivity.this, MainActivity.class);
+                    // startActivity(intent);
                     break;
                 case R.id.btnGrabarAuto:
                     agregarItemSqlite();
-                    Intent intents = new Intent(GrabarAutoActivity.this, MainActivity.class);
-                    startActivity(intents);
-                    finish();
                     break;
                 case R.id.btnGrabarFoto:
                     cargarImagen();
@@ -113,7 +110,7 @@ import java.util.List;
         @Override
         protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == RESULT_OK) {
+            if (resultCode == RESULT_OK) {
                 Uri path = data.getData();
                 imgGrabarFoto.setImageURI(path);
             }
@@ -132,11 +129,14 @@ import java.util.List;
                 nuevoRegistro.put("marca", edtGrabarMarcaAuto.getText().toString());
                 nuevoRegistro.put("modelo", edtGrabarModeloAuto.getText().toString());
                 nuevoRegistro.put("precio", edtGrabarPrecioAuto.getText().toString());
-                nuevoRegistro.put("km",edtGrabarKilometrosAuto.getText().toString());
-                nuevoRegistro.put("descipcion",edtGrabarDescripcionAuto.getText().toString());
+                nuevoRegistro.put("km", edtGrabarKilometrosAuto.getText().toString());
+                nuevoRegistro.put("descipcion", edtGrabarDescripcionAuto.getText().toString());
                 db.insert("autos", null, nuevoRegistro);
 
                 Toast.makeText(ctx, "Registro Grabado OK", Toast.LENGTH_SHORT).show();
+
+                Intent intents = new Intent(GrabarAutoActivity.this, MainActivity.class);
+                startActivity(intents);
             }else{
                 Toast.makeText(ctx, "Verifique datos inválidos", Toast.LENGTH_SHORT).show();
             }

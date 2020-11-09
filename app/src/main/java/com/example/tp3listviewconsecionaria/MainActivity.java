@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //cargarDatos();
+                cargarDatosSqLite();
                 swipeRefreshLayout.setRefreshing(false);//detiene el icono de refresh
             }
         });
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.mnuPrincipalRefresh:
                 swipeRefreshLayout.setRefreshing(true);
-                //cargarDatos();
+                cargarDatosSqLite();
                 swipeRefreshLayout.setRefreshing(false);
                 break;
             case R.id.mnuPrincipalAgregarAuto:
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
 
-        intent.putExtra("E_ID", auto.getId());
+        intent.putExtra("ID", auto.getId());
         /*intent.putExtra("E_MODELO", auto.getModelo());
         intent.putExtra("E_KM", auto.getKm());
         intent.putExtra("E_MARCA", auto.getMarca());
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void cargarDatos(List<Autos> listaAutos) {
+   /* private void cargarDatos(List<Autos> listaAutos) {
         listaAutos.add(new Autos(1, "Ford Focus III 2.0 Se Plus At6", 945.000f, 2015, 92.000f, "Santa Rosa", "* Linea nueva caja automatica de 6ta con modo Sport y levas al volante\n" +
                 "* Segundo dueño\n" +
                 "* 92.000km\n" +
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 "- se le realizó cambio de aceite, filtro de aceite, filtro de aire y filtro de combustible a los 149 mil km.\n" +
                 "Le funciona absolutamente todo. Detalles a la vista.\n" +
                 "Precio charlable.", R.drawable.auto_7));
-    }
+    }*/
 
     private void cargarDatosSqLite() {
 
@@ -189,10 +189,10 @@ public class MainActivity extends AppCompatActivity {
         listaAutos.clear();
 
         //seleccionamos todos los registros
-        Cursor cursor = db.rawQuery("SELECT * FROM autos ",null);
+        Cursor cursor = db.rawQuery("SELECT * FROM autos ", null);
 
         //nos posicionamos al inicio del curso
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             //iteramos todos los registros del cursor y llenamos array con registros
 
             while (cursor.isAfterLast() == false) {
@@ -211,10 +211,11 @@ public class MainActivity extends AppCompatActivity {
                 cursor.moveToNext();
             }
 
-        }else{
+        } else {
             Toast.makeText(context, "No hay registros", Toast.LENGTH_SHORT).show();
         }
         // cerramos conexion SQLite
         db.close();
     }
+
 }
